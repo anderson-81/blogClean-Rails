@@ -1,0 +1,88 @@
+<div class="container">
+   <div class="row">
+      <div class="col-lg-8">
+         <% flash.each do |key, value| %>
+         <%= content_tag(:div, value, class: "margin-top-form alert alert-#{key}") %>
+         <% end %>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-lg-8">
+         <% if !@post_last.nil? %>
+            <%= link_to post_path(@post_last) do %>
+               <h1 class="mt-4"><%= @post_last.title %></h1>
+               <p class="mt-6"><%= @post_last.briefing %></p>
+               <img class="img-fluid rounded" src="<%= @post_last.avatar.url %>">
+               <hr>
+            <% end %>
+         <% end %>
+      </div>
+      <div class="col-md-4">
+         <div class="card my-4">
+            <h5 class="card-header">Search</h5>
+            <%= form_tag(posts_path, :method => :get) do %>
+            <div class="card-body">
+               <div class="input-group">
+                  <input type="text" name="search" id="search" class="form-control">
+                  <span class="input-group-btn">
+                     <input type="submit" value="Search" id="btnSearch" class="btn btn-secondary cursor-pointer">
+                  </span>
+               </div>
+            </div>
+            <% end %>
+         </div>
+         <div class="card my-4">
+            <h5 class="card-header">Post by Date</h5>
+            <div class="card-body">
+               <div class="row">
+                  <ul>
+                     <% @post_search.each do |post| %>
+                        <%= link_to post_path(post) do %>
+                           <li><%= post.title %></li>
+                        <% end %>
+                     <% end %>
+                  </ul>
+               </div>
+               <div class="row">
+                  <%= will_paginate @post_search, list_classes: %w(pagination justify-content-end) %>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="col-lg-8">
+         <% if !@post_all.nil? %>
+            <% @post_all.each do |post| %>
+               <%= link_to post_path(post) do %>
+                  <h3><%= post.title %></h3>
+                  <p class="mt-6"><%= post.briefing %></p>
+               <% end %>
+               <hr>
+            <% end %>
+         <% end %>
+         <%= will_paginate @post_all, list_classes: %w(pagination justify-content-end) %>
+      </div>
+   </div>
+
+   <style>
+      
+      a:link {
+          color:#8b0000;
+      }
+
+      a:visited {
+          color: green;
+      }
+
+      a:hover {
+         text-decoration: none;
+      }
+
+      a:active {
+         text-decoration: none;
+      }
+
+      input[type=text], input[type=submit], .field_search {
+         border:2px solid black;
+      }
+   </style>
+</div>

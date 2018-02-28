@@ -1,0 +1,106 @@
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<div class="container margin-top-form">
+   <div class="row">
+      <div class="col-md-8">
+         <h1>Edit</h1>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-lg-8">
+         <% flash.each do |key, value| %>
+         <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+         <% end %>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-md-8">
+         <%= form_for @post do |f| %>
+         <div class="form-group">
+            <% if @post.errors.any? %>
+            <div class="list_error_form">
+               <ul>
+                  <% @post.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                  <% end %>
+               </ul>
+            </div>
+            <% end %>
+         </div>
+         <div class="form-group">
+            <%= f.hidden_field :user_id, :value => current_user.id, :class => 'form-control'  %>
+         </div>
+         <div class="form-group">
+            <%= f.label :title %>
+            <%= f.text_field :title, :class => 'form-control border-solid'  %>
+         </div>
+         <div class="form-group">
+            <%= f.label :briefing %>
+            <%= f.text_field :briefing, :class => 'form-control border-solid' %>
+         </div>
+         <div class="form-group">
+            <%= f.label :text %>
+            <%= f.text_area :text, :class => 'form-control border-solid', :rows => 15, :style => 'resize: none' %>
+         </div>
+         <div class="form-group">
+            <label for="">Image</label>
+            <%= link_to 'Current Image', @post.avatar.url %>
+            <%= f.file_field :avatar, :class => 'form-control border-solid cursor-pointer' %>
+         </div>
+         <div class="form-group">
+            <button type="button" class="btn btn-warning col-md-2 cursor-pointer float-right margin-bottom_button" data-toggle="modal" data-target="#modalEdit">Edit</button>
+            <%= link_to 'Cancel', root_path, :class=>'btn btn-info col-md-2 cursor-pointer float-right margin-bottom_button' %>
+            <button type="button" class="btn btn-danger col-md-2 cursor-pointer float-right margin-bottom_button" data-toggle="modal" data-target="#modalDelete">Delete</button>
+         </div>
+         <div id="modalEdit" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h4 class="modal-title">Question</h4>
+                     <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+                  <div class="modal-body">
+                     <p>Do you want edit this post?</p>
+                  </div>
+                  <div class="modal-footer">
+                     <%= button_to "Yes", @post, :class => 'btn btn-warning cursor-pointer', :method => "update" %>
+                     <button type="button" class="btn btn-secondary cursor-pointer" data-dismiss="modal">No</button>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div id="modalDelete" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h4 class="modal-title">Question</h4>
+                     <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+                  <div class="modal-body">
+                     <p>Do you want delete this post?</p>
+                  </div>
+                  <div class="modal-footer">
+                     <%= button_to 'Yes',  @post,  method: :delete, :class => 'btn btn-danger cursor-pointer' %>
+                     <button type="button" class="btn btn-secondary cursor-pointer" data-dismiss="modal">No</button>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <% end %>
+      </div>
+   </div>
+</div>
+<style>
+   .margin-bottom_button{
+   margin-bottom: 20px;
+   }
+   label{
+   font-weight: bold;
+   }
+   .list_error_form{
+      border:3px solid red;
+      background-color:#f2ddbe;
+      color:red;
+      font-weight:bold;
+      border-radius:7px;  
+   }
+</style>

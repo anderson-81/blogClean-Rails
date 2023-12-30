@@ -5,34 +5,54 @@
  */
 
 body {
-    padding-top: 54px;
-    background-color: #C8C8C8 !important; 
+  padding-top: 54px;
+  background-color: #c8c8c8 !important;
 }
 
 @media (min-width: 992px) {
-    body {
-        padding-top: 56px;
-    }
+  body {
+    padding-top: 56px;
+  }
 }
 
 .cursor-pointer {
-	cursor:pointer !important;
+  cursor: pointer !important;
 }
 
-  .border-solid{
-    border: 2px solid black !important;
-  }
+.border-solid {
+  border: 2px solid black !important;
+}
 
-  textarea{
-     resize: none;
-  }
+textarea {
+  resize: none;
+}
 
-  .margin-top-form{
-    margin-top: 20px;
-  }
+#error_explanation {
+  color: #ed4545;
+  background-color: #eddfce;
+}
 
-  #error_explanation{
-   color:#ED4545;background-color:#eddfce;
-  }
+/* application.css */
 
+.alert-success,
+.alert-notice {
+  color: white;
+  border: 2px solid white;
+  background-color: green;
+}
 
+.alert-danger {
+  color: white;
+  border: 2px solid white;
+  background-color: red;
+}
+
+.alert-warning {
+  color: white;
+  border: 2px solid white;
+  background-color: orange;
+}
+
+.margin-top-15 {
+  margin-top: 15px;
+}

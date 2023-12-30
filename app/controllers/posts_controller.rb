@@ -1,6 +1,5 @@
 require 'open-uri'
 
-
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show, :search]
@@ -25,7 +24,7 @@ class PostsController < ApplicationController
 
   def edit
     if @post.user_id != current_user.id
-      flash[:danger] = "This post can't be edited or destroyed by this user."
+      flash[:danger] = "This post can't be edited or destroyed by this User."
       redirect_to post_path(@post)
     end
   end
@@ -35,10 +34,10 @@ class PostsController < ApplicationController
 
     #Assigning current user to post.
     @post.user = current_user
-    
+
     respond_to do |format|
       if @post.save
-        flash[:success] = 'Post was successfully created.'
+        flash[:success] = 'Successfully created.'
         format.html { redirect_to @post}
       else
         format.html { render :new }
@@ -49,7 +48,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        flash[:success] = 'Post was successfully edited.'
+        flash[:success] = 'Successfully edited.'
         format.html { redirect_to @post}
       else
         format.html { render :edit }
@@ -60,7 +59,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     respond_to do |format|
-      flash[:success] = 'Post was successfully destroyed.'
+      flash[:success] = 'Successfully destroyed.'
       format.html { redirect_to posts_url}
     end
   end

@@ -1,0 +1,22 @@
+.margin-bottom_button {
+  margin-bottom: 20px;
+}
+label {
+  font-weight: bold;
+}
+.list_error_form {
+  border: 3px solid red;
+  background-color: #f2ddbe;
+  color: red;
+  font-weight: bold;
+  border-radius: 7px;
+}
+textarea {
+  resize: none;
+}
+
+.image-post {
+  border: 3px solid black;
+  border-radius: 5px;
+  width: 200px;
+}

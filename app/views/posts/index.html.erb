@@ -1,13 +1,6 @@
 <div class="container">
    <div class="row">
       <div class="col-lg-8">
-         <% flash.each do |key, value| %>
-         <%= content_tag(:div, value, class: "margin-top-form alert alert-#{key}") %>
-         <% end %>
-      </div>
-   </div>
-   <div class="row">
-      <div class="col-lg-8">
          <% if !@post_last.nil? %>
             <%= link_to post_path(@post_last) do %>
                <h1 class="mt-4"><%= @post_last.title %></h1>
@@ -62,27 +55,5 @@
          <%= will_paginate @post_all, list_classes: %w(pagination justify-content-end) %>
       </div>
    </div>
-
-   <style>
-      
-      a:link {
-          color:#8b0000;
-      }
-
-      a:visited {
-          color: green;
-      }
-
-      a:hover {
-         text-decoration: none;
-      }
-
-      a:active {
-         text-decoration: none;
-      }
-
-      input[type=text], input[type=submit], .field_search {
-         border:2px solid black;
-      }
-   </style>
+   <%= stylesheet_link_tag '/assets/posts/index', media: 'all', 'data-turbolinks-track' => true %>
 </div>

@@ -1,33 +1,28 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 <div class="container margin-top-form">
    <div class="row">
-      <div class="col-md-4">
+      <div class="col-4">
+         <div></div>
+      </div>
+      <div class="col-4">
          <div class="form-group">
             <h2>Login</h2>
          </div>
          <div class="form-group">
             <%= f.label :email %><br />
-            <%= f.email_field :email, autofocus: true, :class => 'form-control border-solid', :value => 'user@user.com' %>
+            <%= f.email_field :email, autofocus: true, :class => 'form-control border-solid', :value => '' %>
          </div>
          <div class="form-group">
             <%= f.label :password %><br />
-            <%= f.password_field :password, autocomplete: "off", :class => 'form-control border-solid', :value => 'User1981', :readonly => 'readonly' %>
+            <%= f.password_field :password, autocomplete: "off", :class => 'form-control border-solid', :value => '', :readonly => 'readonly' %>
          </div>
          <div class="form-group mg_btn">
-            <%= f.submit "Login" %>
+            <%= f.submit "Login", :class => "btn btn-success col-md-4 cursor-pointer float-right" %>
             <%= link_to 'Cancel', root_path, :class=>'btn btn-secondary cursor-pointer col-md-4 float-right' %>
          </div>
       </div>
+      <div class="col-4"></div>
    </div>
 </div>
 <% end %>
-<script>
-   jQuery("input[type=submit").attr("class","btn btn-success col-md-4 cursor-pointer float-right");
-</script>
-
-
-<style>
-  .mg_btn{
-    margin-bottom:30%; 
-  }
-</style>
+<%= stylesheet_link_tag '/assets/devise/login', media: 'all', 'data-turbolinks-track' => true %>

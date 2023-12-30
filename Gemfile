@@ -18,22 +18,20 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
 
-gem "paperclip", "~> 5.2.1"
-
-gem "aws-sdk"
-
-gem 'sqlite3', '~> 1.3', '>= 1.3.13'
-
 gem 'will_paginate', '~> 3.1.0'
 
 gem 'will_paginate-bootstrap4'
 
-group :development, :test do
-  gem 'byebug'
-end
+gem 'bigdecimal', '1.3.5'
 
-group :development do
+gem "paperclip", "~> 6.0.0"
+
+gem 'cocaine'
+
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
+
+group :development, :test do
+  gem 'sqlite3', git: "https://github.com/larskanis/sqlite3-ruby", branch: "add-gemspec"
+  gem 'byebug'
   gem 'web-console', '~> 2.0'
 end
-
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

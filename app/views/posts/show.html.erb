@@ -1,19 +1,13 @@
 <div class="container">
    <div class="row">
-      <div class="col-lg-8">
-         <% flash.each do |key, value| %>
-            <%= content_tag(:div, value, class: "margin-top-form alert alert-#{key}") %>
-         <% end %>
-      </div>
-   </div>
-   <div class="row">
-      <div class="col-lg-8">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-10">
          <h1 class="title"><%= @post.title %></h1>
          <h5 class="briefing"><%= @post.briefing %></h5>
          <h6>by <%= @post.user.email %></h6>
          <hr>
          <p class="float-left">Posted on <%= @post.created_at.strftime("%d/%m/%Y  %H:%M") %>&nbsp</p>
-         <p  class="float-right">   <% if @post.created_at != @post.updated_at %>
+         <p class="float-right">   <% if @post.created_at != @post.updated_at %>
             and updated on <%= @post.updated_at.strftime("%d/%m/%Y  %H:%M") %>
             <% end if %>
          </p>
@@ -24,28 +18,17 @@
          <p><%= @post.text %></p>
          <hr>
       </div>
+      <div class="col-lg-1"></div>
    </div>
    <div class="row">
-      <div class="col-lg-8 margin-bottom_button">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-10 margin-bottom_button">
          <% if user_signed_in? %>
             <%= link_to 'Edit', edit_post_path(@post), :class => 'btn btn-warning col-md-2 float-right' %>
          <% end if %>
          <%= link_to 'Back', posts_path, :class => 'btn btn-secondary  col-md-2 float-right' %>
       </div>
+      <div class="col-lg-1"></div>
    </div>
 </div>
-
-<style>
-   .title{
-      color:#8b0000;
-   }
-
-   .briefing{
-      color:green;
-   }
-
-   .margin-bottom_button{
-      margin-bottom: 20px;
-   }
-
-</style>
+<%= stylesheet_link_tag '/assets/posts/show', media: 'all', 'data-turbolinks-track' => true %>

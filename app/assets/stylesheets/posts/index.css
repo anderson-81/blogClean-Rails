@@ -1,0 +1,21 @@
+a:link {
+  color: #8b0000;
+}
+
+a:visited {
+  color: green;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+
+input[type="text"],
+input[type="submit"],
+.field_search {
+  border: 2px solid black;
+}
